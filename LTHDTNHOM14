@@ -1,183 +1,20 @@
-#include<iostream>
-#include<iomanip>
-#include<fstream>
-#include<vector> 
+#include <iostream>
+#include <iomanip>
+#include <string.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <fstream>
+//ng 1->20
 using namespace std;
-class Nguoi{
-    protected:
-        string MaSo, Name,GioiTinh, MSSV,Lop;
-        int NamSinh,Tuoi;
-    public:
-        
-        virtual void Nhap(){
-            cout<<"\n----------------------------------------------------------------------";
-            cout<<"\nNhap ma so: ";
-            cin.ignore(256,'\n');
-            cout<<"\nNhap ten hoc sinh: ";
-            fflush(stdin);
-            getline(cin,Name);
-            cout<<"\nNhap gioi tinh : ";
-            fflush(stdin);
-            getline(cin,GioiTinh);
-            cout<<"\nNhap ma so sinh vien: ";
-            cin>>MSSV;
-            cout<<"\nNhap lop: ";
-            fflush(stdin);
-            getline(cin,Lop);
-            cout<<"\nNhap nam sinh: ";
-            cin>>NamSinh;
-            cout<<"\nNhap tuoi: ";
-            cin>>Tuoi;
-        }
-           virtual void Xuat(){
-            cout<<"\n-----------------------------------------------------------------------"<<endl;
-            cout<<"Ma so: "<<MaSo<<endl;
-            cout<<"Ho ten: "<<Name<<endl;
-            cout<<"Gioi tinh: "<<GioiTinh<<endl;
-            cout<<"Ma so sinh vien: "<<MSSV<<endl;
-            cout<<"Lop: "<<Lop<<endl;
-            cout<<"Nam sinh: "<<NamSinh<<endl;
-            cout<<"Tuoi: "<<Tuoi<<endl;
-        }
+
+class HOTEN
+{
+		protected:
+		char ho[10], tenlot[20], ten[10];
 };
-class diem : public Nguoi
+class MONHOC
 {
-    private:
-	    float dtb;
-	    float drl;
-	    float dcong;
-
-    public:
-	void Nhap(){
-        Nguoi::Nhap();
-        cout << " Nhap diem trung binh:";
-	    cin >> dtb;
-	    cout << "\n Nhap diem ren luyen:";
-	    cin >> drl;
-	    cout << "\n Nhap diem cong:";
-	    cin >> dcong;
-    }
-	void Xuat(){
-        Nguoi::Xuat();
-        cout << "\n Diem TB:" << dtb;
-	    cout << "\n Diem ren luyen:" << drl;
-	    cout << "\n Diem cong:" << dcong;
-    }
-	void sapxep();
-	void timkiemdiem_dtb(float diemtb);
-	void timkiemdiem_masv(string msv);
-	void timkiemdiem_ten(string tensv);
-	void ghi_file();
-	void doc_file(int sod);
-	int dem();
-	float laydtb();
+		protected:
+	float diemmon1, diemmon2, diemmon3, diemtb;
 };
-// HAM NHAP
-
-// HAM IN
-// HAM GHI FILE
-
-void diem::ghi_file()
-{
-	fstream f;
-	f.open("DIEM.TXT", ios::binary | ios::app | ios::out);
-	f.write((char *)this, sizeof(*this));
-	f.close();
-}
-
-// HAM DOC FILE
-
-void diem::doc_file(int sod)
-{
-	fstream f;
-	f.open("DIEM.TXT", ios::binary | ios::in);
-	f.seekg(sod * sizeof(diem));
-	f.read((char *)this, sizeof(*this));
-	f.close();
-}
-// HAM DEM
-
-int diem::dem()
-{
-	ifstream f;
-	f.open("DIEM.TXT", ios::binary);
-	f.seekg(0, ios::end);
-	if (!f)
-		return 0;
-	else
-		return (int)f.tellg() / sizeof(diem);
-        
-}
-
-// TIM KIEM DIEM THEO MA SV
-
-void diem::timkiemdiem_masv(string msv)
-{
-	diem d;
-	int so = diem::dem();
-	for (int i = 0; i < so; i++)
-	{
-		d.doc_file(i);
-		if (MSSV == msv)
-			d.Xuat();
-	}
-}
-
-// TIM KIEM DIEM THEO TEN
-
-void diem::timkiemdiem_ten(string tensv)
-{
-	diem d;
-	int so = diem::dem();
-	for (int i = 0; i < so; i++)
-	{
-		d.doc_file(i);
-		if (Name == tensv)
-			d.Xuat();
-	}
-}
-
-// TIM KIEM THEO DTB
-
-void diem::timkiemdiem_dtb(float diemtb)
-{
-	diem d;
-	int so = diem::dem();
-	for (int i = 0; i < so; i++)
-	{
-		d.doc_file(i);
-		if (dtb == diemtb)
-			d.Xuat();
-	}
-}
-class QuanLySinhVien{
-    private:
-        //Ap dung cac cau truc du lieu
-        vector<Nguoi *> NG;
-    public:
-        void NhapDS(){
-            Nguoi *ng;
-            int n;
-            cout<<"Nhap so luong sinh vien: ";
-            cin>>n;
-            for(int i=0;i<n;i++){
-                ng=new diem;
-                ng->Nhap();
-                NG.push_back(ng);
-                cout<<endl;
-            }
-        }
-        void XuatDS(){
-            cout<<endl<<"*******Danh sach sinh vien*******"<<endl;
-            for(int i=0; i<this->NG.size();i++){
-                this->NG.at(i)->Xuat();
-                cout<<endl;
-            }
-    }
-};
-int main()
-{
-    QuanLySinhVien a;
-    a.NhapDS();
-    a.XuatDS();
-}
