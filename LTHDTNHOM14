@@ -30,3 +30,33 @@ class SINHVIEN:public HOTEN,public MONHOC,public NGAYSINH
 	friend class DSSINHVIEN;
 		
 };
+class DSSINHVIEN
+{
+	private:
+	  SINHVIEN *a;
+	  int n;
+	public:
+		void Nhap_kluu();
+		void Nhap_luufile();
+		void Docfile();
+		void xuatthongtin();
+		void Tim_msv();
+		void tim_Ten();
+		void Tim_dtb();
+		void timsv_GioiTinh();
+		void Tim_tuoi();
+		int Dem_dtb();
+		int Dem_ten();
+		int Dem_tuoi();
+		int Dem_gioitinh();
+		void HoanVi(SINHVIEN &a, SINHVIEN &b);
+		void SapXep_msv();
+		void SapXep_tsv();
+		void SapXep_tuoi();
+		void SapXep_dtb();
+		void SapXep_gt();
+		void Them();
+		void xoa(int &x);
+		void luufile();  
+
+};
