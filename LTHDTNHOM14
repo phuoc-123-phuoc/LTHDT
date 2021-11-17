@@ -195,3 +195,128 @@ void DSSINHVIEN::luufile()
 	cout<<"\nLuu file thanh cong !";
 	system("pause");
 }
+void DSSINHVIEN::Nhap_luufile()
+{
+	char Tenfile[25];
+	cout << "\nNhap Ten File Can Ghi:";
+	fflush(stdin);
+	cin >> Tenfile;
+	fstream fout(Tenfile, ios::out | ios::binary);
+	if (!fout)
+	{
+		cout << "\nKhong Tao Duoc File Ghi" << Tenfile << endl;
+		exit(0);
+	}
+	cout << "\n Nhap vao so sinh vien:" << endl;
+	cin >> n;
+	a = new SINHVIEN[n];
+	for (int i = 0; i < n; i++)
+	{
+		cout << "\n nhap vao thong tinh sinh vien thu:" << i + 1;
+		fflush(stdin);
+		do
+		{
+			cout << "\n nhap vao ma so sinh vien : ";
+			gets(a[i].masv);
+			if (strlen(a[i].masv) <= 0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (strlen(a[i].masv) <= 0);
+		do
+		{
+			cout << "\n nhap vao ho :";
+			gets(a[i].ho);
+			if (strlen(a[i].ho) <= 0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+
+		} while (strlen(a[i].ho) <= 0);
+		do
+		{
+			cout << "\n nhap vao ten lot : ";
+			gets(a[i].tenlot);
+			if (strlen(a[i].tenlot) <= 0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (strlen(a[i].tenlot) <= 0);
+		do
+		{
+			cout << "\n nhap vao ten : ";
+			gets(a[i].ten);
+			if (strlen(a[i].ten) <= 0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (strlen(a[i].ten) <= 0);
+		do
+		{
+			cout << "\n nhap vao gioi tinh Nam hoac Nu : ";
+			gets(a[i].gioitinh);
+			if (strlen(a[i].gioitinh) <=0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (strlen(a[i].gioitinh) <=0);
+		do
+		{
+			cout << "\n nhap vao ngay sinh : ";
+			cin >> a[i].ngay;
+			if (a[i].ngay <= 0 || a[i].ngay >= 31)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (a[i].ngay <= 0 || a[i].ngay >= 31);
+		do
+		{
+			cout << "\n nhap vao thang sinh : ";
+			cin >> a[i].thang;
+			if (a[i].thang <= 0 || a[i].thang > 12)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while ((a[i].thang <= 0 || a[i].thang > 12));
+		do
+		{
+			cout << "\n nhap vao nam sinh : ";
+			cin >> a[i].nam;
+			if (a[i].nam <= 0)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while (a[i].thang <= 0);
+		do
+		{
+			cout << "\n nhap vao diem  mon 1 : ";
+			cin >> a[i].diemmon1;
+			if (a[i].diemmon1 < 0 || a[i].diemmon1>10)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while ((a[i].diemmon1 < 0 || a[i].diemmon1>10));
+		do
+		{
+			cout << "\n nhap vao diem  mon 2 : ";
+			cin >> a[i].diemmon2;
+			if (a[i].diemmon2 < 0 || a[i].diemmon2>10)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+		} while ((a[i].diemmon2 < 0 || a[i].diemmon2>10));
+		do
+		{
+			cout << "\n nhap vao diem  mon 3 : ";
+			cin >> a[i].diemmon3;
+			if (a[i].diemmon3 < 0 || a[i].diemmon3>10)
+			{
+				cout << "\n loi !!! Moi nhap lai";
+			}
+        } while ((a[i].diemmon3 < 0 || a[i].diemmon3>10));
+
+		a[i].diemtb = (a[i].diemmon1 + a[i].diemmon2 + a[i].diemmon3) / 3;
+		fout.write((char*)(&a[i]), sizeof(SINHVIEN));
+	}
+	fout.close();
+}
