@@ -175,3 +175,23 @@ void DSSINHVIEN::Nhap_kluu()
 		
 	}
 }
+void DSSINHVIEN::luufile()
+{
+	char Tenfile[25];
+	cout << "\nNhap Ten File Can Ghi:";
+	fflush(stdin);
+	cin >> Tenfile;
+	fstream fout(Tenfile, ios::out | ios::binary);
+	if (!fout)
+	{
+		cout << "\nKhong Tao Duoc File Ghi" << Tenfile << endl;
+		exit(0);
+	}
+		for (int i = 0; i < n; i++)
+	{
+		fout.write((char*)(&a[i]), sizeof(SINHVIEN));
+	}
+	fout.close();
+	cout<<"\nLuu file thanh cong !";
+	system("pause");
+}
