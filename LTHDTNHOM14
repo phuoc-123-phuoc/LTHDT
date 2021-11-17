@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <fstream>
-//ng 1->20
 using namespace std;
 
 class HOTEN
@@ -17,4 +16,17 @@ class MONHOC
 {
 		protected:
 	float diemmon1, diemmon2, diemmon3, diemtb;
+};
+class NGAYSINH
+{
+		protected:
+		int ngay, thang, nam;
+};
+class SINHVIEN:public HOTEN,public MONHOC,public NGAYSINH
+{
+	protected:
+		char masv[10];
+		char gioitinh[5];
+	friend class DSSINHVIEN;
+		
 };
