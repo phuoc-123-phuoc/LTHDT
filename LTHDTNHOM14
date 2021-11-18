@@ -434,7 +434,7 @@ void DSSINHVIEN::timsv_GioiTinh()
 	int tim = 0;
 	char gt[10];
 	fflush(stdin);
-	cout << "\nNhap gioi tinh sinh vien can tim nam hoac nu : ";
+	cout << "\nNhap gioi tinh sinh vien can tim Nam hoac Nu : ";
 	gets(gt);
 	cout << "\n----------Danh sach cac sinh vien duoc tim thay------------" << endl;
 	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
