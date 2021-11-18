@@ -353,7 +353,20 @@ void DSSINHVIEN::Docfile()
 	fin.close();
 	for(int j=0; j<n;j++)
 	a[j]=T[j];
-}void DSSINHVIEN::tim_Ten()
+}
+void DSSINHVIEN::xuatthongtin()
+{
+	cout << setiosflags(ios::showpoint) << setprecision(2);
+	cout << "__________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho Va Ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1"<<"|" << setw(4) <<"Mon2" <<"|"<< setw(4) << "Mon3" <<"|"<< setw(3) << "Dtb"<<" "<< "|" << endl;
+	cout << "__________________________________________________________________________________________\n";
+	for (int i = 0; i < n; i++)
+	{
+		cout << "|" << setw(4) << i + 1 <<"|"<< setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" /*<< fixed << setprecision(1)*/ << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+		cout << "| " << setw(88) << "|" << endl;
+	}
+}
+void DSSINHVIEN::tim_Ten()
 {
 	int tim = 0;
 	char ho[30];
