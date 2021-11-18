@@ -320,3 +320,69 @@ void DSSINHVIEN::Nhap_luufile()
 	}
 	fout.close();
 }
+void DSSINHVIEN::Docfile()
+{
+	char Tenfile[25];
+	cout << "Nhap Ten Tap Tin Can Doc:";
+	fflush(stdin);
+	cin >>  Tenfile;
+	SINHVIEN sv;
+	SINHVIEN T[n];
+	fstream fin(Tenfile, ios::in | ios::binary);
+	if (!fin)
+	{
+		cout << "Khong mo duoc file" << Tenfile << endl;
+		exit(1);
+	}
+	int i = 0;
+	cout << setiosflags(ios::showpoint) << setprecision(2);
+	cout << "_________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "stt" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << " " << setw(4) << "Mon2" << " " << setw(4) << "Mon3" << " " << setw(3) << "dtb" << " " << "|" << endl;
+	cout << "_________________________________________________________________________________________\n";
+	while (1)
+	{
+		fin.read((char*)(&sv), sizeof(SINHVIEN));
+		T[i]=sv;
+		if (!fin)
+			break;
+		cout << "|" << setw(4) << i + 1 << setw(8) << sv.masv << "|" << setw(10) << sv.ho << " " << setw(10) << sv.tenlot << " " << setw(10) << sv.ten << "|" << setw(8) << sv.gioitinh << "|" << setw(3) << sv.ngay << "/" << setw(3) << sv.thang << "/" << setw(4) << sv.nam << "|" /*<< fixed << setprecision(1)*/ << setw(4) << sv.diemmon1 << " " << setw(4) << sv.diemmon2 << " " << setw(4) << sv.diemmon3 << " " << setw(3) << sv.diemtb << " |" << endl;
+		cout << "| " << setw(87) << "|" << endl;
+		i++;
+	}
+	n = i;
+	fin.close();
+	for(int j=0; j<n;j++)
+	a[j]=T[j];
+}void DSSINHVIEN::tim_Ten()
+{
+	int tim = 0;
+	char ho[30];
+	char tenlot[30];
+	char ten[30];
+	
+	cout << "\nNhap ten sinh vien can tim: ";
+	fflush(stdin);
+	cout << "\nHo: ";
+	gets(ho);
+	fflush(stdin);
+	cout << "\nTen lot: ";
+	gets(tenlot);
+	fflush(stdin);
+	cout << "\nTen: ";
+	gets(ten);
+	
+	cout << "\n----------Danh sach cac sinh vien duoc tim thay------------" << endl;
+	cout << "|" << setw(4) << "Stt" << "|" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
+	cout << "------------------------------------------------------------------------------------------\n";
+	for (int i = 0; i<n; ++i)
+	{
+		if (strcmp(a[i].ho, ho) == 0 && strcmp(a[i].tenlot, tenlot) == 0 && strcmp(a[i].ten, ten) == 0)
+		{
+			cout << "|" << setw(4) << i + 1 << "|" << setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" << setprecision(2) << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+			cout << "| " << setw(88) << "|" << endl;
+			tim++;
+		}
+	}
+	if (tim == 0)
+		cout << "\n khong tim thay";
+}
