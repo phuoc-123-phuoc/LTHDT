@@ -503,6 +503,29 @@ void DSSINHVIEN::Tim_tuoi()
 		if (tim==0)
 			 cout << "\n khong tim thay";
 }
+int DSSINHVIEN::Dem_dtb()
+{
+	int dem = 0;
+	float  d1, d2;
+	cout << "\nNhap diem trung binh can dem nam trong khoan : ";
+	cout << "\n tu diem: ";
+	cin >> d1;
+	cout << "\n toi diem: ";
+	cin >> d2;
+	cout << "|" << setw(4) << "Stt" << "|" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
+	cout << "------------------------------------------------------------------------------------------\n";
+	for (int i = 0; i < n;i++)
+	if ((a[i].diemtb) <= d2 && (a[i].diemtb) >= d1)
+	{
+		
+		
+		cout << "|" << setw(4) << i + 1 <<"|"<< setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" << fixed << setprecision(1) << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+		cout << "| " << setw(88) << "|" << endl;
+		dem++;
+	}
+		return dem;
+	
+}
 int DSSINHVIEN::Dem_tuoi()
 {
 
