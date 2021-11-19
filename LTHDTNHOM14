@@ -474,3 +474,57 @@ void DSSINHVIEN::timsv_GioiTinh()
 		cout << "\n khong tim thay";
 
 }
+void DSSINHVIEN::Tim_tuoi()
+{
+	int tim = 0;
+	
+	int namhientai ;
+	int tuoi;
+	time_t Time = time(0);
+	struct tm* Now = localtime(&Time);
+	namhientai = Now->tm_year + 1900;
+	fflush(stdin);
+	cout << "\nNhap tuoi sinh vien can tim: ";
+	cin>>tuoi;
+	cout << "\n----------Danh sach cac sinh vien duoc tim thay------------" << endl;
+	cout << "|" << setw(4) << "Stt" << "|" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
+	cout << "------------------------------------------------------------------------------------------\n";
+	for (int i = 0; i < n; ++i)
+	{
+		if ((namhientai - a[i].nam) == tuoi)
+		{
+			
+			cout << "|" << setw(4) << i + 1 << "|" << setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" << setprecision(2) << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+			cout << "| " << setw(88) << "|" << endl;
+			tim++;
+		}
+	}
+	
+		if (tim==0)
+			 cout << "\n khong tim thay";
+}
+int DSSINHVIEN::Dem_tuoi()
+{
+
+	int dem = 0;
+	int namhientai;
+	int tuoi;
+	time_t Time = time(0);
+	struct tm* Now = localtime(&Time);
+	namhientai = Now->tm_year + 1900;
+	fflush(stdin);
+	cout << "\nNhap vao tuoi can dem : ";
+	cin >> tuoi;
+	cout << "|" << setw(4) << "Stt" << "|" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
+	cout << "------------------------------------------------------------------------------------------\n";
+	for (int i = 0; i < n; i++)
+	if ((namhientai - a[i].nam) == tuoi)
+	{
+		cout << "|" << setw(4) << i + 1 << "|" << setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" << fixed << setprecision(1) << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+		cout << "| " << setw(88) << "|" << endl;
+		dem++;
+	}
+	return dem;
+
+
+}
