@@ -551,3 +551,33 @@ int DSSINHVIEN::Dem_tuoi()
 
 
 }
+int DSSINHVIEN::Dem_ten()
+{
+
+	int dem = 0;
+	char ten[50];
+	char tenlot[50];
+	char ho[50];
+	fflush(stdin);
+	cout << "\nNhap vao ho ten sinh vien muon dem : ";
+	cout << "\nHo:";
+	gets(ho);
+	fflush(stdin);
+	cout << "\nTen lot:";
+	gets(tenlot);
+	fflush(stdin);
+	cout << "\nTen :";
+	gets(ten);
+	cout << "|" << setw(4) << "Stt" << "|" << setw(8) << "MSV " << "|" << setw(32) << "Ho va ten           " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Mon1" << "|" << setw(4) << "Mon2" << "|" << setw(4) << "Mon3" << "|" << setw(3) << "Dtb" << " " << "|" << endl;
+	cout << "------------------------------------------------------------------------------------------\n";
+	for (int i = 0; i < n; i++)
+	if (strcmp(a[i].ten, ten) == 0 && strcmp(a[i].ho, ho) == 0 && strcmp(a[i].tenlot, tenlot) == 0)
+	{
+		cout << "|" << setw(4) << i + 1 << "|" << setw(8) << a[i].masv << "|" << setw(10) << a[i].ho << " " << setw(10) << a[i].tenlot << " " << setw(10) << a[i].ten << "|" << setw(8) << a[i].gioitinh << "|" << setw(3) << a[i].ngay << "/" << setw(3) << a[i].thang << "/" << setw(4) << a[i].nam << "|" << fixed << setprecision(1) << setw(4) << a[i].diemmon1 << "|" << setw(4) << a[i].diemmon2 << "|" << setw(4) << a[i].diemmon3 << "|" << setw(3) << a[i].diemtb << " |" << endl;
+		cout << "| " << setw(88) << "|" << endl;
+		dem++;
+		
+	}
+	return dem;
+	
+}
