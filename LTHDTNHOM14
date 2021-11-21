@@ -604,3 +604,9 @@ int DSSINHVIEN::Dem_gioitinh()
 	return dem;
 
 }
+void DSSINHVIEN::HoanVi(SINHVIEN &a, SINHVIEN &b)
+{
+	SINHVIEN tam = a;
+	a = b;
+	b = tam;
+}
