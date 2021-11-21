@@ -1,1 +1,46 @@
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+#include <fstream>
+using namespace std;
 
+class HOTEN
+{
+		private:
+			string Ho, TenDem, Ten;
+		public:
+			HOTEN(string ho="", string tendem="", string ten="");
+			void Nhap();
+			string GetHo();
+			string GetTenDem();
+			string GetTen();
+};
+void HOTEN::Nhap()
+{
+	cout<<"\nNhap ho: ";
+	fflush(stdin);
+	cin>>Ho;
+	cout<<"\nNhap ten dem: ";
+	fflush(stdin);
+	getline(cin,TenDem);
+	cout<<"\nNhap ten: ";
+	cin>>Ten;
+}
+HOTEN::HOTEN(string ho, string tendem, string ten)
+{
+	Ho=ho;
+	TenDem=tendem;
+	Ten=ten;
+}
+string HOTEN::GetHo()
+{
+	return Ho;
+}
+string HOTEN::GetTenDem()
+{
+	return TenDem;
+}
+string HOTEN::GetTen()
+{
+	return Ten;
+}
