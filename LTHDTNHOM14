@@ -95,3 +95,50 @@ float MONHOC::GetDtb()
 {
 	return (Lthdt+Ctdlvgt+Csdl+TkWeb)/4;
 }
+class NGAYSINH
+{
+		private:
+			int Ngay, Thang, Nam;
+		public:
+		    NGAYSINH(int ngay=1, int thang=1, int nam=2002 );
+			void Nhap();
+			int GetNgay();
+			int GetThang();
+			int	GetNam();
+			int GetTuoi();
+};
+NGAYSINH::NGAYSINH(int ngay, int thang, int nam)
+{
+	Ngay=ngay;
+	Thang=thang;
+	Nam=nam;
+}
+void NGAYSINH::Nhap()
+{
+	cout<<"\nNhap ngay sinh: ";
+	cin>>Ngay;
+	cout<<"\nNhap thang sinh: ";
+	cin>>Thang;
+	cout<<"\nNhap nam sinh: ";
+	cin>>Nam;
+}
+int NGAYSINH::GetNgay()
+{
+	return Ngay;
+}
+int NGAYSINH::GetThang()
+{
+	return Thang;
+}
+int NGAYSINH::GetNam()
+{
+	return Nam;
+}
+int NGAYSINH::GetTuoi()
+{
+	int namhientai;
+	time_t t = time(0);
+	struct tm *Now = localtime(&t);
+	namhientai = Now ->tm_year + 1900;
+	return namhientai-Nam;
+}
