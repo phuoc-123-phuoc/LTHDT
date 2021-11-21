@@ -610,3 +610,25 @@ void DSSINHVIEN::HoanVi(SINHVIEN &a, SINHVIEN &b)
 	a = b;
 	b = tam;
 }
+
+
+
+
+
+
+void DSSINHVIEN::SapXep_tuoi()
+{
+	int namhientai;
+	time_t Time = time(0);
+	struct tm* Now = localtime(&Time);
+	namhientai = Now->tm_year + 1900;
+	for (int i = 0; i < n - 1; i++)
+	{
+
+		for (int j = i + 1; j < n; j++)
+		{
+			if (((namhientai-a[i].nam)-(namhientai- a[j].nam))>0)
+				HoanVi(a[i], a[j]);
+		}
+	}
+}
