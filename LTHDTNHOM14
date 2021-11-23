@@ -177,3 +177,43 @@ string SINHVIEN::GetGioiTinh()
 {
 	return GioiTinh;
 }
+struct NODE
+{
+	SINHVIEN data;  
+	struct NODE *pNext; 
+};
+class LIST
+{
+	private:
+		NODE* pHead; 
+		NODE* pTail; 
+	public:
+		LIST();
+		NODE* KhoiTaoNODE(SINHVIEN x);
+	    void ThemVaoCuoi(NODE* p);	
+	    void XuatDanhSach();
+	    void NhapDS();
+	    void Xoa_msv();
+	    void SapXep_msv();
+	    void SapXep_Ten();
+	    void SapXep_Tuoi();
+	    void SapXep_Dtb();
+	    void SapXep_gioitinh();
+	    void luufile();
+	    void Tim_msv();
+	    void Tim_Ten();
+	    void Tim_dtb();
+	    void Tim_Gioitinh();
+	    void Tim_Tuoi();
+        void Sua_msv();
+        void XoaDs();
+        int Dem_dtb();
+        int Dem_Ten();
+        int Dem_Gioitinh();
+        int Dem_Tuoi();
+        void ThongKe_Dtb();
+        void ThongKe_Tuoi();
+        void ThongKe_Ten();
+        void ThongKe_GioiTinh();
+        
+};
