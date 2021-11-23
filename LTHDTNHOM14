@@ -142,3 +142,38 @@ int NGAYSINH::GetTuoi()
 	namhientai = Now ->tm_year + 1900;
 	return namhientai-Nam;
 }
+class SINHVIEN:public HOTEN,public MONHOC,public NGAYSINH
+{
+	private:
+		string MSV;
+		string GioiTinh;
+	public:
+		SINHVIEN(string msv="", string gioitinh="",int ngay=1, int thang=1, int nam=2002,string ho="",string tendem="", string ten="",float Lthdt=0, float Ctdlvgt=0, float Csdl=0, float TkWeb=0):HOTEN(ho,tendem,ten),NGAYSINH(ngay,thang,nam),MONHOC(Lthdt,Ctdlvgt,Csdl,TkWeb)
+		{
+			MSV=msv;
+			GioiTinh=gioitinh;
+		}
+	    void Nhap();
+		string GetMSV();
+		string GetGioiTinh();	
+};
+void SINHVIEN::Nhap()
+{
+	HOTEN::Nhap();
+	NGAYSINH::Nhap();
+	MONHOC::Nhap();
+	cout<<"\nNhap ma sinh vien: ";
+	fflush(stdin);
+	cin>>MSV;
+	cout<<"\nNhap gioi tinh: ";
+	fflush(stdin);
+	cin>>GioiTinh;
+}
+string SINHVIEN::GetMSV()
+{
+	return MSV;
+}
+string SINHVIEN::GetGioiTinh()
+{
+	return GioiTinh;
+}
