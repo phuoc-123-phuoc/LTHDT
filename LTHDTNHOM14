@@ -217,3 +217,20 @@ class LIST
         void ThongKe_GioiTinh();
         
 };
+LIST::LIST()
+{
+	pHead=NULL;
+	pTail=NULL;
+}
+NODE* LIST::KhoiTaoNODE(SINHVIEN x)
+{
+	NODE *p = new NODE; 
+	if (p == NULL)
+	{
+		cout << "\nKhong du bo nho de cap phat !";
+		return NULL;
+	}
+	p->data = x; 
+	p->pNext = NULL; 
+	return p; 
+}
