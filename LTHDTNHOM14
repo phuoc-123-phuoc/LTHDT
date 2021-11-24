@@ -778,6 +778,21 @@ int menu()
 	cin>>luachon;
 	return luachon;
 }
+int menu1()
+{
+	int luachon;
+	system("cls");
+	cout<<"\n\t\t\t\t\t\t======SAP XEP======\n";
+	cout<<"\t\t\t\t\t1 - Sap xep theo ma sinh vien\n";
+	cout<<"\t\t\t\t\t2 - Sap xep theo ten sinh vien\n";
+	cout<<"\t\t\t\t\t3 - Sap xep theo tuoi sinh vien\n";
+	cout<<"\t\t\t\t\t4 - Sap xep theo diem trung binh sinh vien\n";
+	cout<<"\t\t\t\t\t5 - Sap xep theo gioi tinh sinh vien\n";
+	cout<<"\t\t\t\t\t0 - Thoat\n";
+	cout<<"\t\t\t\t\tNhap lua chon cua ban: ";
+	cin>>luachon;
+	return luachon;
+}
 int menu2()
 {
 	int luachon;
@@ -802,6 +817,20 @@ int menu3()
 	cout<<"\t\t\t\t\t2 - Dem theo ten sinh vien\n";
 	cout<<"\t\t\t\t\t3 - Dem theo tuoi sinh vien\n";
 	cout<<"\t\t\t\t\t4 - Dem theo gioi tinh\n";
+	cout<<"\t\t\t\t\t0 - Thoat\n";
+	cout<<"\t\t\t\t\tNhap lua chon cua ban: ";
+	cin>>luachon;
+	return luachon;
+}
+int menu4()
+{
+	int luachon;
+	system("cls");
+	cout<<"\n\t\t\t\t\t\t======THONG KE======\n";
+	cout<<"\t\t\t\t\t1 - Thong ke theo diem trung binh\n";
+	cout<<"\t\t\t\t\t2 - Thong ke theo ten sinh vien\n";
+	cout<<"\t\t\t\t\t3 - Thong ke theo tuoi sinh vien\n";
+	cout<<"\t\t\t\t\t4 - Thong ke theo gioi tinh\n";
 	cout<<"\t\t\t\t\t0 - Thoat\n";
 	cout<<"\t\t\t\t\tNhap lua chon cua ban: ";
 	cin>>luachon;
@@ -871,6 +900,36 @@ void Menu2(LIST &l)
 				break;
 			case 5:
 				l.Tim_Gioitinh();
+				system("pause");
+				break;
+			default:
+				printf("\nLua chon cua ban chua hop le !");
+				system("pause");
+			    break;	
+		}
+	}
+}
+void Menu3(LIST &l)
+{
+	int luachon;
+	while((luachon = menu3()) !=0)
+	{
+		switch(luachon)
+		{
+			case 1:
+				cout<<"\nSo sinh vien co diem trung binh thoa dieu kien la "<<l.Dem_dtb();
+				system("pause");
+				break;
+			case 2:
+				cout<<"\nSo sinh vien co ten thoa dieu kien la "<<l.Dem_Ten();
+				system("pause");
+				break;
+			case 3:
+				cout<<"\nSo sinh vien co tuoi thoa dieu kien la "<<l.Dem_Tuoi();
+				system("pause");
+				break;
+			case 4:
+				cout<<"\nSo sinh vien co gioi tinh thoa dieu kien la "<<l.Dem_Gioitinh();
 				system("pause");
 				break;
 			default:
