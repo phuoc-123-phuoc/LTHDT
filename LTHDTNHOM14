@@ -246,6 +246,21 @@ void LIST::ThemVaoCuoi(NODE* p)
 		pTail = p; 
 	}
 }
+void LIST::NhapDS()
+{
+	int n;
+	cout << "\nNhap so luong sinh vien: ";
+	cin >> n;
+	for (int i = 1; i <=n; i++)
+	{
+		system("cls"); 
+		SINHVIEN a;
+		cout << "\nNhap thong tin sinh vien thu: "<<i<<"======***=====";
+		a.Nhap();
+		NODE *p = KhoiTaoNODE(a); 
+		ThemVaoCuoi(p);
+	}
+}
 void LIST::Xoa_msv()
 {
 	string msv;
@@ -279,6 +294,21 @@ void LIST::Xoa_msv()
 	else
 	cout<<"\nKhong tim duoc thong tin can xoa\n";
 }
+void LIST::SapXep_msv()
+{
+	 for(NODE *k=pHead;k!=NULL;k=k->pNext)
+	 {
+		  for(NODE *k2=k->pNext;k2!=NULL;k2=k2->pNext)
+		  {
+			    if(k->data.GetMSV().compare(k2->data.GetMSV())>0) 
+			     {
+			       SINHVIEN tmp=k->data;
+			       k->data=k2->data;
+			       k2->data=tmp;
+			     }
+		  }
+	 }
+}
 void LIST::SapXep_Tuoi()
 {
 	 for(NODE *k=pHead;k!=NULL;k=k->pNext)
@@ -286,6 +316,21 @@ void LIST::SapXep_Tuoi()
 		  for(NODE *k2=k->pNext;k2!=NULL;k2=k2->pNext)
 		  {
 			    if(k->data.GetTuoi()>k2->data.GetTuoi()) 
+			     {
+			       SINHVIEN tmp=k->data;
+			       k->data=k2->data;
+			       k2->data=tmp;
+			     }
+		  }
+	 }
+}
+void LIST::SapXep_Dtb()
+{
+	 for(NODE *k=pHead;k!=NULL;k=k->pNext)
+	 {
+		  for(NODE *k2=k->pNext;k2!=NULL;k2=k2->pNext)
+		  {
+			    if(k->data.GetDtb()>k2->data.GetDtb()) 
 			     {
 			       SINHVIEN tmp=k->data;
 			       k->data=k2->data;
@@ -320,6 +365,29 @@ void LIST::luufile()
 	cout<<"\nLuu file thanh cong !";
 	system("pause");
 }
+void LIST::Tim_msv()
+{
+	int tim = 0,i=0;
+	string msv;
+	cout << "\nNhap ma so sinh vien can tim: ";
+	fflush(stdin);
+	cin>>msv;
+	cout << "\n----------Danh sach cac sinh vien duoc tim thay------------" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho Va Ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Lthdt"<<"|" << setw(4) <<"Ctdlvgt" <<"|"<< setw(4) << "Csdl" <<"|"<< setw(3) << "Tkweb"<<" "<< "|" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	for (NODE *k=pHead;k!=NULL;k=k->pNext)
+	{
+		if (k->data.GetMSV().compare(msv) == 0)
+		{
+			cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
+			cout << "| " << setw(94) << "|" << endl;
+			tim=1;
+		}
+	}
+	if (tim == 0)
+		cout << "\n khong tim thay";
+}
 void LIST::Tim_dtb()
 {
 	int tim = 0,i=0;
@@ -336,6 +404,29 @@ void LIST::Tim_dtb()
 	for (NODE *k=pHead;k!=NULL;k=k->pNext)
 	{
 		if ((k->data.GetDtb()) <= d2 && (k->data.GetDtb()) >= d1)
+		{
+			cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
+			cout << "| " << setw(94) << "|" << endl;
+			tim=1;
+		}
+	}
+	if (tim == 0)
+		cout << "\n khong tim thay";
+}
+void LIST::Tim_Gioitinh()
+{
+	int tim = 0,i=0;
+	string gioitinh;
+	cout<<"\nNhap gioi tinh muon tim: ";
+	fflush(stdin);
+	cin>>gioitinh;
+	cout << "\n----------Danh sach cac sinh vien duoc tim thay------------" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho Va Ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Lthdt"<<"|" << setw(4) <<"Ctdlvgt" <<"|"<< setw(4) << "Csdl" <<"|"<< setw(3) << "Tkweb"<<" "<< "|" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	for (NODE *k=pHead;k!=NULL;k=k->pNext)
+	{
+		if (k->data.GetGioiTinh().compare(gioitinh)==0)
 		{
 			cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
 			cout << "| " << setw(94) << "|" << endl;
@@ -366,6 +457,38 @@ void LIST::Sua_msv()
 	else
 	cout<<"\nSua thong tin thanh cong\n";
 }
+void LIST::XoaDs()
+{
+	NODE *k=NULL;
+	while(pHead != NULL)
+	{
+		k=pHead;
+		pHead=pHead->pNext;
+		delete k;
+	}
+}
+int LIST::Dem_dtb()
+{
+	int dem = 0,i=0;
+	float  d1, d2;
+	cout << "\nNhap diem trung binh can dem nam trong khoan : ";
+	cout << "\n tu diem: ";
+	cin >> d1;
+	cout << "\n toi diem: ";
+	cin >> d2;
+	cout << "________________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho Va Ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Lthdt"<<"|" << setw(4) <<"Ctdlvgt" <<"|"<< setw(4) << "Csdl" <<"|"<< setw(3) << "Tkweb"<<" "<< "|" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	for (NODE *k=pHead; k!=NULL; k=k->pNext)
+	if ((k->data.GetDtb()) <= d2 && (k->data.GetDtb()) >= d1)
+	{
+		cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
+		cout << "| " << setw(94) << "|" << endl;
+		dem++;
+	}
+		return dem;
+	
+}
 int LIST::Dem_Gioitinh()
 {
 	int dem = 0,i=0;
@@ -378,6 +501,25 @@ int LIST::Dem_Gioitinh()
 	cout << "________________________________________________________________________________________________\n";
 	for (NODE *k=pHead; k!=NULL; k=k->pNext)
 	if (k->data.GetGioiTinh().compare(gioitinh)==0)
+	{
+		cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
+		cout << "| " << setw(94) << "|" << endl;
+		dem++;
+	}
+		return dem;
+	
+}
+int LIST::Dem_Tuoi()
+{
+	int dem = 0,i=0;
+	int tuoi;
+	cout<<"\nNhap tuoi muon dem: ";
+	cin>>tuoi;
+	cout << "________________________________________________________________________________________________\n";
+	cout << "|" << setw(4) << "Stt" <<"|"<< setw(8) << "MSV " << "|" << setw(32) << "Ho Va Ten            " << "|" << setw(8) << "GioiTinh" << "|" << setw(12) << "NgaySinh " << "|" << setw(4) << "Lthdt"<<"|" << setw(4) <<"Ctdlvgt" <<"|"<< setw(4) << "Csdl" <<"|"<< setw(3) << "Tkweb"<<" "<< "|" << endl;
+	cout << "________________________________________________________________________________________________\n";
+	for (NODE *k=pHead; k!=NULL; k=k->pNext)
+	if (k->data.GetTuoi()==tuoi)
 	{
 		cout << "|" << setw(4) << ++i <<"|"<< setw(8) <<k->data.GetMSV()<< "|" << setw(6)<< k->data.GetHo() << " " << setw(12)<< k->data.GetTenDem() << " "<< setw(12) << k->data.GetTen()<< "|" << setw(8)<< k->data.GetGioiTinh() << "|" << setw(3) << k->data.GetNgay() << "/" << setw(3) << k->data.GetThang() << "/" << setw(4) << k->data.GetNam() << "|"<< setw(5) << k->data.GetDiemLthdt() << "|" << setw(7) << k->data.GetDiemCtdlvgt() << "|" << setw(4) << k->data.GetDiemCsdl() << "|" << setw(5) << k->data.GetDiemTkWeb() << " |" << endl;
 		cout << "| " << setw(94) << "|" << endl;
@@ -405,6 +547,32 @@ void LIST::ThongKe_Tuoi()
 			}
 		}
 			cout<<"\nCo "<<count<<" sinh vien co tuoi la "<<p->data.GetTuoi();
+		    for(int z=1; z<=count; z++)
+			   {
+			   		p =p->pNext;
+			   }		   	
+	}
+	
+}
+void LIST::ThongKe_Ten()
+{
+	SapXep_Ten();
+	NODE *p=pHead;
+	for(NODE *k= p; k !=NULL; k= p)
+	{
+		int count = 1;
+		for(NODE *k2 = p->pNext; k2 !=NULL; k2=k2->pNext)
+		{
+			if(k->data.GetTen().compare(k2->data.GetTen())==0)
+			{
+				count++;
+			}
+			else
+			{
+				break;
+			}
+		}
+			cout<<"\nCo "<<count<<" sinh vien co ten la "<<p->data.GetTen();
 		    for(int z=1; z<=count; z++)
 			   {
 			   		p =p->pNext;
