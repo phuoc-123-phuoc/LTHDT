@@ -580,3 +580,126 @@ void LIST::ThongKe_Ten()
 	}
 	
 }
+int menu()
+{
+	int luachon;
+	system("cls");
+	system("color b0");
+	cout<<"\n\t\t\t\t\t\t======MENU======\n";
+	cout<<"\t\t\t\t\t1 - Nhap danh sach sinh vien\n";
+	cout<<"\t\t\t\t\t2 - Xuat danh sach sinh vien\n";
+	cout<<"\t\t\t\t\t3 - Sua thong tin theo ma sinh vien\n";
+	cout<<"\t\t\t\t\t4 - Xoa thong tin sinh vien theo ma sinh vien\n";
+	cout<<"\t\t\t\t\t5 - Xoa danh sach\n";
+	cout<<"\t\t\t\t\t6 - Sap xep\n";
+	cout<<"\t\t\t\t\t7 - Tim kiem\n";
+	cout<<"\t\t\t\t\t8 - Dem thong tin\n";
+	cout<<"\t\t\t\t\t9 - Thong ke\n";
+	cout<<"\t\t\t\t\t10 - Luu file\n";
+	cout<<"\t\t\t\t\t0 - Thoat\n";
+	cout<<"\t\t\t\t\tNhap lua chon cua ban: ";
+	cin>>luachon;
+	return luachon;
+}
+int menu3()
+{
+	int luachon;
+	system("cls");
+	cout<<"\n\t\t\t\t\t\t======DEM======\n";
+	cout<<"\t\t\t\t\t1 - Dem theo diem trung binh\n";
+	cout<<"\t\t\t\t\t2 - Dem theo ten sinh vien\n";
+	cout<<"\t\t\t\t\t3 - Dem theo tuoi sinh vien\n";
+	cout<<"\t\t\t\t\t4 - Dem theo gioi tinh\n";
+	cout<<"\t\t\t\t\t0 - Thoat\n";
+	cout<<"\t\t\t\t\tNhap lua chon cua ban: ";
+	cin>>luachon;
+	return luachon;
+}
+void Menu2(LIST &l)
+{
+	int luachon;
+	while((luachon = menu2()) !=0)
+	{
+		switch(luachon)
+		{
+			case 1:
+				l.Tim_msv();
+				system("pause");
+				break;
+			case 2:
+				l.Tim_Ten();
+				system("pause");
+				break;
+			case 3:
+				l.Tim_Tuoi();
+				system("pause");
+				break;
+			case 4:
+				l.Tim_dtb();
+				system("pause");
+				break;
+			case 5:
+				l.Tim_Gioitinh();
+				system("pause");
+				break;
+			default:
+				printf("\nLua chon cua ban chua hop le !");
+				system("pause");
+			    break;	
+		}
+	}
+}
+int main()
+{   
+	LIST l;
+	int luachon;
+	while((luachon = menu()) !=0)
+	{
+		switch(luachon)
+		{
+			case 1:
+				l.NhapDS();
+				system("pause");
+				break;
+			case 2:
+				l.XuatDanhSach();
+				system("pause");
+				break;
+			case 3:
+				l.Sua_msv();
+				l.XuatDanhSach();
+				system("pause");
+				break;
+			case 4:
+				l.Xoa_msv();
+				l.XuatDanhSach();
+				system("pause");
+				break;
+			case 5:
+			    l.XoaDs();
+				system("pause");
+			    break;
+			case 6:
+				Menu1(l);
+				system("pause");
+				break;
+			case 7:
+				Menu2(l);
+				system("pause");
+				break;
+			case 8:
+				Menu3(l);
+				break;
+			case 9:
+				Menu4(l);
+				break;
+			case 10:
+				l.luufile();
+				break;
+			default:
+				printf("\nLua chon khong hop le !");
+				system("pause");
+				break;	
+		}
+	}
+}
